@@ -1,0 +1,9 @@
+While Loop: This loop will execute a set of commands while a certain condition is true.
+--------------------------------------------------------------------------------------------------------------
+Syntax:
+
+while <ANY_CONDITION_TO_CHECK>;do
+
+          LINES_OF_COMMAND_TO_TEST
+
+done
