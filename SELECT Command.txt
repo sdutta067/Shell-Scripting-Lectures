@@ -1,0 +1,44 @@
+Select command : This command is also use to get the user input and allow user to select an option from the predefine menu. Basically we can use this command to create a menu.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Syntax :
+
+select {VARIABLE_NAME} in {LIST_OF_OPTIONS};  #If we don't specify the {VARIABLE_NAME},user input will be store in built-in "RESPONSE" variable.
+do
+  list_of_commands_to_execute_as_per_the_situation
+break          #Optionally we can use the break command so that it come out of the infinite loop. Otherwise it will go on infinite loop.
+done
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+ ***********  PS3 Variable :   ***********
+
+The PS3 variable in Linux is the prompt for the select built-in command in Bash. It is used to display interactive menus.
+
+The PS3 variable is used to display the prompt for the select command.
+
+You can customize the PS3 variable in the script where the select command is used.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+EXAMPLE:
+
+  1 #!/bin/bash
+  2 
+  3 PS3="What is the day of the week?: "  #As you can see we have customized the PS3 prompt here. We can use multiple PS3 variable in a single script if needed.
+  4 
+  5 select day in Monday Tuesday Wednesday Thursday Friday Saturday Sunday;
+  6 do
+  7   echo "The day of the week is ${day}"
+  8 break
+  9 done
+
+[root@python shell_scripting_class]# ./select_commad.sh 
+
+1) Monday     3) Wednesday  5) Friday	  7) Sunday
+2) Tuesday    4) Thursday   6) Saturday
+
+What is the day of the week?: 2
+
+The day of the week is Tuesday
+
+
+
+

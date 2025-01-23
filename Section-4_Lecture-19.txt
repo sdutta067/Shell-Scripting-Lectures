@@ -1,0 +1,86 @@
+Section : 4 , lecture: 19 (Positional parameters , arguments , for loop, special parameters.)
+---------------------------------------------------------------------------------------------
+
+basename : it's remove the directory name and show only the file name on the same path.
+
+Example :
+
+[root@python shell_scripting_class]# pwd
+/root/shell_scripting_class
+
+[root@python shell_scripting_class]# basename /root/shell_scripting_class/random_func.sh 
+random_func.sh
+
+As you can see it's only giving the file name (i.e, random_func.sh) and removed the directory path (i.e, /root/shell_scripting_class).
+
+======================================================================================================================================
+
+dirname : It's gives only the directory path and remove the file name.
+
+Example:
+
+[root@python shell_scripting_class]# pwd
+/root/shell_scripting_class
+
+[root@python shell_scripting_class]# dirname /root/shell_scripting_class/random_func.sh 
+/root/shell_scripting_class
+
+As you can see it's giving only the directory path and removed the file name.
+
+======================================================================================================================================
+
+Special parameters:
+--------------------------------------------------------------------------------------------------------------------------------------
+
+${#} : Indicates the total number of arguments user has used on the cli at the time of executing the script.
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+${@} : Counts the total number of arguments user has provide on the CLI during the script execution. REMEMBER , ${@} treats each argument as a single value and acts on it.
+
+Example:
+
+  1 #!/bin/bash
+  2 
+  3 for USER in "${@}":
+  4 do
+  5      PASSWORD=$(date +%s%N|sha256sum|head -c48)
+  6      echo "${USER}:${PASSWORD}"
+  7 done
+
+After execute :
+
+[root@python shell_scripting_class]# ./positional.sh sudip mona rishi
+sudip:d75ea06659cb52a5835f4cadf42c8943c14630d2f941cbb6
+mona:b002c2374c35869c33de6914523161407e0bc6795e51f95b
+rishi::b58fdc2a41a07d9ebb66b2713549ebd4ade1b335b773d672
+
+As you can see it's generate the password for each users provided as the command line arguments.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+${*} : It's treats all the arguments as a single word and execute it.
+
+Example:
+
+  1 #!/bin/bash
+  2 
+  3 for USER in "${*}":
+  4 do 
+  5      PASSWORD=$(date +%s%N|sha256sum|head -c48)
+  6      echo "${USER}:${PASSWORD}"
+  7 done
+
+After execution:
+
+[root@python shell_scripting_class]# ./positional.sh sudip mona rishi
+
+sudip mona rishi::9bfa4c19c320ef1eab89861c8b0f5e123464a31cb5ef2493
+
+As you can see it's generate single password for all the users.
+
+
+
+         
+
+

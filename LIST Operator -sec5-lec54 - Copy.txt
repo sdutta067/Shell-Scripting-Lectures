@@ -1,0 +1,49 @@
+List Operator : ; , & , && , ||   These are 4 types of list operator we have. We use these operators to create chain command.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+& : It's send 1st command in the background and process with the second command. Also let us know once the 1st command executed successfully (see below).
+
+Example:
+  
+[root@python shell_scripting_class]# echo 123 & echo 456
+
+[1] 3558
+456
+123
+[1]+  Done           echo 123
+
+As we can see here command "echo 123" was send in the background and proceed with the second command "echo 456". Also informed us once the second command is executed.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+; : Process the command sequentially , means one after another.
+
+[root@python shell_scripting_class]# echo 123 ; echo 456
+123
+456
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+&& : It execute the second command only if the first one was successful.
+
+Example:
+
+[root@python shell_scripting_class]# ls random_directory && echo 456
+
+ls: cannot access 'random_directory': No such file or directory
+
+As we can see , here first command "ls random_directory" was failed or returned non zero exit code , hence second command did not execute.
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+|| : It execute the second command only if the first one was failed.
+
+Example:
+
+[root@python shell_scripting_class]# echo 123 || echo 456
+123
+
+As we can see first command "echo 123" was successful or returned exit code 0 , so second command did not execute.

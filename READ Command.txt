@@ -1,0 +1,47 @@
+read : This command is used to take the user input.
+
+-p : We can use this option to give a prompt to the user.
+
+-t (specified seconds): We can use this option to wait for certain time period to get the user input. If user don't provide any input during the time period   we will go to next promt.
+
+-s : S stands for secrete, we can use this option if we don't want to display the information user is passing on the command line.
+
+-N (specified number): We can user this option with a specified number, so that user will provide exact that number.
+
+example: read -N 4 : Means user must provide 4 numbers.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  EXAMPLE:
+
+
+  1 #!/bin/bash
+  2 
+  3 read -s  -p -t 5 "Enter your first name: " name   #Here we are expecting response from the user within 5 seconds, that's why we have set a flag '-t 5'.
+  4 read -s  -p -t 5 "Enter your age: " age           #Whatever user will type it will not be visible, as we are using '-s'.
+  5 read -s  -p -t 5 "Enter your town: " town
+  6 
+  7 echo "Welcome ${name}"
+  8 echo "You are ${age} years old"
+  9 echo "You are from ${town}"
+
+Output:
+
+
+[root@python shell_scripting_class]# ./read.sh 
+
+Enter your first name: sudip
+Enter your age: 32
+Enter your town: bangalore
+
+Welcome sudip
+You are 32 years old
+You are from bangalore
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+ 

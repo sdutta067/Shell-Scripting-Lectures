@@ -1,0 +1,49 @@
+Function : Gives us an advantage to reuse the block of code. It's reduce the chance of code duplication.
+
+Syntax :
+
+ function_name() {
+
+    list of commands here.
+
+}
+
+Function call:
+
+ function_name arg1 arg2 arg3 (This arguments are optional )
+
+-----------------------------------------------------------------------------------------------------------
+
+###########  What is shift command and how does it work?  ##############
+
+The shift command removes some number of arguments from the beginning of the arguments list.  The default number of arguments to remove is 1, so in the script above the shift command with no arguments will remove just the first argument.  After the first argument is removed, what used to be the second argument becomes the new first argument, the third argument becomes the second, etc.
+
+For example, a later project has you provide a script with a user name and then a comment for the user, like the user's name.  That means you might call the script with:
+
+./add-new-local-user john John Smith
+
+The first argument, "john", would be the username.  After processing it, you could use shift to drop it from the argument list to change the argument list to just "John Smith".  Then you can use the full argument array ($@) to set the comment.  This would be more reliable than just using the second and third arguments because the shift lets you handle an uncertain number of remaining arguments (like if the arguments include their middle name along with first and last).
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  1 #!/bin/bash
+  2 
+  3 log(){
+  4  local VERBOSE="${1}"  (#This will take the value from line 13&14 and shift will process that and MESSAGE will store it.Only display the MSG once VERBOSE is true.)
+  5  shift
+  6  local MESSAGE="${@}"   #${@} is storing the value we are passing from line 8 and 9 , while calling the function.
+  7  if [[ "${VERBOSE}" = "true" ]]
+  8  then
+  9      echo "${MESSAGE} from function calling line"
+ 10  fi
+ 11 }
+ 12 
+ 13 log 'true' 'Hello!'
+ 14 log 'true' 'This is fun!' #This line will print when we will call the function as VERBOSE is set to True in the above line.
+
+OUTPUT :
+
+[root@python shell_scripting_class]# ./func3_udemy.sh 
+
+Hello! from function calling line
+This is fun! from function calling line
+

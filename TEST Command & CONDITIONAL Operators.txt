@@ -1,0 +1,56 @@
+TEST Command : A command that can be used in bash to compare different pices of information. If a test command is evaluated to be true, the test will return   an exit status of 0 else return exit status of 1.
+
+Syntax :   [[ Test_command_here ]]  ***** Note : We must put space before and after the square bracket ******
+
+[root@python shell_scripting_class]# [ 2 -eq 2 ] ; echo $?
+0
+
+All the test commands are : -eq , -gt , -lt , -leq , -geq   **** Note : These commands are used to test the integer numbers ****
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+String compare operator:
+
+= , != , -z (To test if a string is empty), -n (To test if a string is not zero/not empty)
+
+Example :
+
+[root@python shell_scripting_class]# a=hello
+[root@python shell_scripting_class]# b=goodbye
+[root@python shell_scripting_class]# [[ ${a} = ${b} ]] ; echo $?
+1
+
+As both a and b are not same , hence returned non-zero exit code.
+
+
+[root@python shell_scripting_class]# [[ -z $c ]] ; echo $?
+0
+
+We don't have c string, hence it's empty or do not exist. That's why we got exit status code 0.
+
+[root@python shell_scripting_class]# c=anything            #Now we have created the c string.
+[root@python shell_scripting_class]# [[ -z $c ]] ; echo $?
+1
+
+Now we have created the c string , now it's giving non-zero exit code.
+
+[root@python shell_scripting_class]# [[ -n $c ]] ; echo $?  #As c string is not empty , we got status code 0.
+0
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+File test operator:
+
+-e (To check if file exist or not)
+
+[root@python shell_scripting_class]# [[ -e today.txt ]] ; echo $?
+1
+
+As we don't have today.txt exist in our current directory , we got non-zero exit code here.
+
+[root@python shell_scripting_class]# touch today.txt
+[root@python shell_scripting_class]# [[ -e today.txt ]] ; echo $?
+0
+
+
+
+
+

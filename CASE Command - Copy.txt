@@ -1,0 +1,43 @@
+Case statement always starts with "case" and ends with "esac" reserved word. It's a simpler version of "if-elif-else" statement.
+
+******** Note : Case statement can do logical checks on a single variable******
+------------------------------------------------------------------------------------------------------------------------------------
+Syntax :
+
+  case "<$VARIABLE_NAME>" in
+           
+         [CONDITION_CHECK]) "<MESSAGE_TO_PRINT>";;
+  
+  esac
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Example:
+
+  1 #!/bin/bash
+  2 
+  3 read -p "Enter a number: " number
+  4 
+  5 case "$number" in
+  6         [0-9]) echo "You have entered single digit number";;
+  7         [0-9][0-9]) echo "You have entered double digit number";;
+  8         [0-9][0-9][0-9]) echo "You have entered 3 didgit number";;
+            *) echo "You have entered a number that is more than three digits";;
+  9
+ 10 esac
+
+
+Output:
+
+[root@python shell_scripting_class]# ./case_statement.sh 
+Enter a number: 3
+You have entered single digit number
+[root@python shell_scripting_class]# ./case_statement.sh 
+Enter a number: 35
+You have entered double digit number
+[root@python shell_scripting_class]# ./case_statement.sh 
+Enter a number: 333
+You have entered 3 didgit number
+[root@python shell_scripting_class]# ./case_statement.sh 
+Enter a number: 4444
+You have entered a number that is more than three digits

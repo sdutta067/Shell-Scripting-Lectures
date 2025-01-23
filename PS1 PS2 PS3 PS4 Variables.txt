@@ -1,0 +1,11 @@
+PS1: The primary prompt string, which is displayed before each command.
+
+PS2: The secondary prompt string, which is displayed when a command needs more input.
+
+PS3 : The PS3 variable in Linux is the prompt for the select built-in command in Bash. It is used to display interactive menus.
+
+      The PS3 variable is used to display the prompt for the select command.
+
+      You can customize the PS3 variable in the script where the select command is used.
+
+PS4 : The value is printed before each command bash displays during an execution trace.

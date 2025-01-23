@@ -1,0 +1,98 @@
+Note : Value of the special parameter is predefined , we can not manually changed it.
+
+IFS= space, comma(i.e, ,)   default is space.
+
+------------------------------------------------------------------------------------------------------------------------------
+$0 : Represents the script name itself.
+
+[root@python shell_scripting_class]# ./special_parameter.sh
+
+./special_parameter.sh
+
+As we can see  $0 is representing the script name here.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+$1....$n : Represents the arguments we pass from the CLI at the time of executing the script.
+
+Example :
+
+[root@python shell_scripting_class]# ./special_parameter.sh a b c d e f
+
+a b c d e f
+
+Here $1 is a , $2 is b , $3 is c , $4 is d, $5 is e and $6 is f. If we provide more arguments, it would  store them to respective 
+----------------------------------------------------------------------------------------------------------------------------------
+$@ : Display all the command line arguments passed during the script execution.
+
+Example:
+
+  1 #!/bin/bash
+  2 
+  3 echo $@
+
+
+[root@python shell_scripting_class]# ./special_parameter.sh a b c d e f
+
+a b c d e f
+
+As we can see here we have passed 6 arguments while executing the script, and $@ displays all the arguments passed.
+---------------------------------------------------------------------------------------------------------------------------------
+"$@" : We can use this if we don't want any word splitting , as you can see we have passed 2 arguments in CLI and exactly that displayed without any word splitting.
+
+Example:
+
+  1 #!/bin/bash
+  2 
+  3 echo $@
+  4 echo $#
+
+root@python shell_scripting_class]# ./special_parameter.sh  "Daily Task" "Monthly Report"
+
+Daily Task Monthly Report
+2
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+$* : Exactly same as $@ , it's gives the same result as $@.
+
+Example:
+
+  1 #!/bin/bash
+  2 
+  3 echo $*
+  4 echo $#
+
+[root@python shell_scripting_class]# ./special_parameter.sh sudip dutta mona dutta rishi dutta
+
+sudip dutta mona dutta rishi dutta
+6
+
+As you see , we have passed 3 arguments but it's showing 6. Actually it's splitted the arguments based on spaces.
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+"$*" : It's splits the arguments based on the IFS variables. (Note : Default IFS is space) , we can change the IFS variable as shown below.
+
+ 
+  
+  Example:
+
+  1 #!/bin/bash
+  2 
+  3 IFS=,         #Here we have changed the IFS variable to ','. That is why we are getting , separated value .
+  4 echo "$*"
+  5 echo $#
+
+
+ [root@python shell_scripting_class]# ./special_parameter.sh a b c d e
+ a,b,c,d,e
+ 5
+------------------------------------------------------------------------------------------------------------------------------
+
+$? : Returns the exit code of the last executed command.
+
+
+
+
+
