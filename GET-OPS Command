@@ -1,6 +1,6 @@
-Getops command basically allow user to run the script with some predefine option.
+Getopts (means get options) command basically allow user to run the script with some predefine option.
 
-**** NOTE : getops command only show the option in the commandline nothing more nothing less. Then we can process that option accroding to our choice using logic.
+**** NOTE : getopts command only show the option in the commandline nothing more nothing less. Then we can process that option accroding to our choice using logic.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Syntax:
 
