@@ -1,0 +1,1 @@
+read-while loop is basically a combination of both read command and while loop. It is used to iterate over the containt of a file line by line.
