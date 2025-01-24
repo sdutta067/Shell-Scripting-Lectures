@@ -1,0 +1,36 @@
+Getops command basically allow user to run the script with some predefine option.
+
+**** NOTE : getops command only show the option in the commandline nothing more nothing less. Then we can process that option accroding to our choice using logic.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Syntax:
+
+getops <option_we_want_to_set> <variable_name>   #whatever option user will select, it will be saved to <variable_name> and process further.
+
+If we put colon(:) infront of the option (i.e, f:), means option expect an argument to pass. Without an argument it will throw an error. 
+Whatever argument user will enter that will store in $OPTARG, example: if user choose f 32, 32 will be saved in $OPTARG. (See example below)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Example:
+  1 #!/bin/bash
+  2 
+  3 while getopts "f:c:" opt; do
+  4 case "$opt" in
+  5         c)result=$(echo "scale=2; ($OPTARG * (9/5)) + 32" | bc);;
+  6         f)result=$(echo "scale=2; ($OPTARG-32 )* (5/9)" | bc);;
+  7         /?)
+  8 esac
+  9 done
+ 10 
+ 11 echo "$result"
+
+
+
+Output:
+
+[root@python shell_scripting_class]# vim get_ops.sh
+[root@python shell_scripting_class]# ./get_ops.sh 
+
+[root@python shell_scripting_class]# ./get_ops.sh  -f 32
+0
+[root@python shell_scripting_class]# ./get_ops.sh  -c 32
+89.60
